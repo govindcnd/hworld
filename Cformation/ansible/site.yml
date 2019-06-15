@@ -1,0 +1,9 @@
+---
+# This playbook deploys the whole application stack in this site.  
+
+- name: set up web server on all nodes
+  hosts: all
+  remote_user: ec2-user
+  roles:
+    - webserver
+
