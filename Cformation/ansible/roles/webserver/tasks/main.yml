@@ -14,6 +14,12 @@
   template: src=nginx.conf.j2 dest=/etc/nginx/nginx.conf
   register: confupdated_server
 
+- name: deploy helloworld json
+  copy:
+    src: sample.json
+    dest: /usr/share/nginx/html/ 
+  
+
 - name: restart nginx
   service: name=nginx state=restarted
   when: confupdated_server.changed 
