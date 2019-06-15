@@ -36,8 +36,8 @@ http {
     # for more information.
     include /etc/nginx/conf.d/*.conf;
 
-    index   index.html index.htm;
-
+#    index   index.html index.htm;
+    index    sample.json;
     server {
         listen       80 default_server;
         listen       [::]:80 default_server;
@@ -45,11 +45,15 @@ http {
         root         /usr/share/nginx/html;
 
         # Load configuration files for the default server block.
-        include /etc/nginx/default.d/*.conf;
+#        include /etc/nginx/default.d/*.conf;
+#        rewrite /  /usr/share/nginx/html/sample.json last;
+
 
         location / {
         }
-
+        location = /sample.json {
+          root    /usr/share/nginx/html ;
+        }
         # redirect server error pages to the static page /40x.html
         #
         error_page 404 /404.html;
@@ -63,7 +67,9 @@ http {
         }
 
     }
-
+      map $http_content_type $error_resp {
+          default / ;
+          ~json /sample.json;
+       }
 
 }
-
