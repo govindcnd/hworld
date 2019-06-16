@@ -4,15 +4,15 @@ Parameters:
     VpcId:
         Type: 'AWS::EC2::VPC::Id'
         Description: VpcId of your existing Virtual Private Cloud (VPC)
-        Default: vpc-67050303
+        Default: vpc-XXXXXXX
         ConstraintDescription: must be the VPC Id of an existing Virtual Private Cloud.
     LSubnet1:
         Type: List<AWS::EC2::Subnet::Id>
-        Description: Subnet Id for LogSubnet1 using staging db subnets here
+        Description: Subnet Id for Subnet using  webserver  subnets here
     KeyName:
         Description: Name of an existing EC2 KeyPair to enable SSH access to the instances
         Type: 'AWS::EC2::KeyPair::KeyName'
-        Default: drp-test
+        Default: my-test
         ConstraintDescription: must be the name of an existing EC2 KeyPair.
     SSHLocation:
         Description: Lockdown SSH access to the bastion host (default can be accessed from anywhere)
@@ -82,8 +82,16 @@ Parameters:
             - cc2.8xlarge
             - cg1.4xlarge
         ConstraintDescription: must be a valid EC2 instance type.
+    InstanceMinCount:
+        Description: Number of Minimum EC2 instances to launch
+        Type: Number
+        Default: '1'
+    InstanceMaxCount:
+        Description: Number of Maximum EC2 instances to launch
+        Type: Number
+        Default: '1'
     InstanceCount:
-        Description: Number of EC2 instances to launch
+        Description: Number of EC2 instances to launch Desired Count (must be </= to min count )
         Type: Number
         Default: '1'
 
@@ -366,8 +374,10 @@ Resources:
             VPCZoneIdentifier: !Ref LSubnet1
             LaunchConfigurationName:
                 Ref: LaunchConfig
-            MinSize: '1'
-            MaxSize: '1'
+            MinSize: 
+                Ref: InstanceMinCount
+            MaxSize: 
+                Ref: InstanceMaxCount
             HealthCheckType: EC2
             HealthCheckGracePeriod: '300'
             DesiredCapacity:
@@ -443,8 +453,8 @@ Resources:
                 Target: 'TCP:80'
                 HealthyThreshold: '2'
                 UnhealthyThreshold: '9'
-                Interval: '30'
-                Timeout: '25'
+                Interval: '10'
+                Timeout: '5'
     LoadBalancerSecurityGroup:
         Type: 'AWS::EC2::SecurityGroup'
         Properties:
