@@ -22,6 +22,10 @@ Parameters:
         Default: 1.2.3.4/32
         AllowedPattern: "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})"
         ConstraintDescription: must be a valid CIDR range of the form x.x.x.x/x.
+    Clustername:
+        Description: eks-clsutername must be lower case no special characteres
+        Type: String
+
     InstanceType:
         Description: WebServer EC2 instance type
         Type: String
@@ -94,279 +98,11 @@ Parameters:
         Description: Number of EC2 instances to launch Desired Count (must be </= to min count )
         Type: Number
         Default: '1'
+    InstanceImageId:
+        Description: AMI id for the node instances. 
+        Type: AWS::EC2::Image::Id
+        Default: 'ami-0d741ed58ca5b342e'
 
-
-Mappings:
-    Region2Examples:
-        us-east-1:
-            Examples: 'https://s3.amazonaws.com/cloudformation-examples-us-east-1'
-        us-west-2:
-            Examples: 'https://s3-us-west-2.amazonaws.com/cloudformation-examples-us-west-2'
-        us-west-1:
-            Examples: 'https://s3-us-west-1.amazonaws.com/cloudformation-examples-us-west-1'
-        eu-west-1:
-            Examples: 'https://s3-eu-west-1.amazonaws.com/cloudformation-examples-eu-west-1'
-        eu-central-1:
-            Examples: 'https://s3-eu-central-1.amazonaws.com/cloudformation-examples-eu-central-1'
-        ap-southeast-1:
-            Examples: 'https://s3-ap-southeast-1.amazonaws.com/cloudformation-examples-ap-southeast-1'
-        ap-northeast-1:
-            Examples: 'https://s3-ap-northeast-1.amazonaws.com/cloudformation-examples-ap-northeast-1'
-        ap-northeast-2:
-            Examples: 'https://s3-ap-northeast-2.amazonaws.com/cloudformation-examples-ap-northeast-2'
-        ap-southeast-2:
-            Examples: 'https://s3-ap-southeast-2.amazonaws.com/cloudformation-examples-ap-southeast-2'
-        sa-east-1:
-            Examples: 'https://s3-sa-east-1.amazonaws.com/cloudformation-examples-sa-east-1'
-        cn-north-1:
-            Examples: 'https://s3.cn-north-1.amazonaws.com.cn/cloudformation-examples-cn-north-1'
-    AWSInstanceType2Arch:
-        t1.micro:
-            Arch: PV64
-        t2.nano:
-            Arch: HVM64
-        t2.micro:
-            Arch: HVMG2
-        t2.small:
-            Arch: HVM64
-        t2.medium:
-            Arch: HVM64
-        t2.large:
-            Arch: HVM64
-        m1.small:
-            Arch: PV64
-        m1.medium:
-            Arch: PV64
-        m1.large:
-            Arch: PV64
-        m1.xlarge:
-            Arch: PV64
-        m2.xlarge:
-            Arch: PV64
-        m2.2xlarge:
-            Arch: PV64
-        m2.4xlarge:
-            Arch: PV64
-        m3.medium:
-            Arch: HVM64
-        m3.large:
-            Arch: HVM64
-        m3.xlarge:
-            Arch: HVM64
-        m3.2xlarge:
-            Arch: HVM64
-        m4.large:
-            Arch: HVM64
-        m4.xlarge:
-            Arch: HVM64
-        m4.2xlarge:
-            Arch: HVM64
-        m4.4xlarge:
-            Arch: HVM64
-        m4.10xlarge:
-            Arch: HVM64
-        c1.medium:
-            Arch: PV64
-        c1.xlarge:
-            Arch: PV64
-        c3.large:
-            Arch: HVM64
-        c3.xlarge:
-            Arch: HVM64
-        c3.2xlarge:
-            Arch: HVM64
-        c3.4xlarge:
-            Arch: HVM64
-        c3.8xlarge:
-            Arch: HVM64
-        c4.large:
-            Arch: HVM64
-        c4.xlarge:
-            Arch: HVM64
-        c4.2xlarge:
-            Arch: HVM64
-        c4.4xlarge:
-            Arch: HVM64
-        c4.8xlarge:
-            Arch: HVM64
-        g2.2xlarge:
-            Arch: HVMG2
-        g2.8xlarge:
-            Arch: HVMG2
-        r3.large:
-            Arch: HVM64
-        r3.xlarge:
-            Arch: HVM64
-        r3.2xlarge:
-            Arch: HVM64
-        r3.4xlarge:
-            Arch: HVM64
-        r3.8xlarge:
-            Arch: HVM64
-        i2.xlarge:
-            Arch: HVM64
-        i2.2xlarge:
-            Arch: HVM64
-        i2.4xlarge:
-            Arch: HVM64
-        i2.8xlarge:
-            Arch: HVM64
-        d2.xlarge:
-            Arch: HVM64
-        d2.2xlarge:
-            Arch: HVM64
-        d2.4xlarge:
-            Arch: HVM64
-        d2.8xlarge:
-            Arch: HVM64
-        hi1.4xlarge:
-            Arch: HVM64
-        hs1.8xlarge:
-            Arch: HVM64
-        cr1.8xlarge:
-            Arch: HVM64
-        cc2.8xlarge:
-            Arch: HVM64
-    AWSInstanceType2NATArch:
-        t1.micro:
-            Arch: NATPV64
-        t2.nano:
-            Arch: NATHVM64
-        t2.micro:
-            Arch: NATHVM64
-        t2.small:
-            Arch: NATHVM64
-        t2.medium:
-            Arch: NATHVM64
-        t2.large:
-            Arch: NATHVM64
-        m1.small:
-            Arch: NATPV64
-        m1.medium:
-            Arch: NATPV64
-        m1.large:
-            Arch: NATPV64
-        m1.xlarge:
-            Arch: NATPV64
-        m2.xlarge:
-            Arch: NATPV64
-        m2.2xlarge:
-            Arch: NATPV64
-        m2.4xlarge:
-            Arch: NATPV64
-        m3.medium:
-            Arch: NATHVM64
-        m3.large:
-            Arch: NATHVM64
-        m3.xlarge:
-            Arch: NATHVM64
-        m3.2xlarge:
-            Arch: NATHVM64
-        m4.large:
-            Arch: NATHVM64
-        m4.xlarge:
-            Arch: NATHVM64
-        m4.2xlarge:
-            Arch: NATHVM64
-        m4.4xlarge:
-            Arch: NATHVM64
-        m4.10xlarge:
-            Arch: NATHVM64
-        c1.medium:
-            Arch: NATPV64
-        c1.xlarge:
-            Arch: NATPV64
-        c3.large:
-            Arch: NATHVM64
-        c3.xlarge:
-            Arch: NATHVM64
-        c3.2xlarge:
-            Arch: NATHVM64
-        c3.4xlarge:
-            Arch: NATHVM64
-        c3.8xlarge:
-            Arch: NATHVM64
-        c4.large:
-            Arch: NATHVM64
-        c4.xlarge:
-            Arch: NATHVM64
-        c4.2xlarge:
-            Arch: NATHVM64
-        c4.4xlarge:
-            Arch: NATHVM64
-        c4.8xlarge:
-            Arch: NATHVM64
-        g2.2xlarge:
-            Arch: NATHVMG2
-        g2.8xlarge:
-            Arch: NATHVMG2
-        r3.large:
-            Arch: NATHVM64
-        r3.xlarge:
-            Arch: NATHVM64
-        r3.2xlarge:
-            Arch: NATHVM64
-        r3.4xlarge:
-            Arch: NATHVM64
-        r3.8xlarge:
-            Arch: NATHVM64
-        i2.xlarge:
-            Arch: NATHVM64
-        i2.2xlarge:
-            Arch: NATHVM64
-        i2.4xlarge:
-            Arch: NATHVM64
-        i2.8xlarge:
-            Arch: NATHVM64
-        d2.xlarge:
-            Arch: NATHVM64
-        d2.2xlarge:
-            Arch: NATHVM64
-        d2.4xlarge:
-            Arch: NATHVM64
-        d2.8xlarge:
-            Arch: NATHVM64
-        hi1.4xlarge:
-            Arch: NATHVM64
-        hs1.8xlarge:
-            Arch: NATHVM64
-        cr1.8xlarge:
-            Arch: NATHVM64
-        cc2.8xlarge:
-            Arch: NATHVM64
-    AWSRegionArch2AMI:
-        us-east-1:
-            PV64: ami-0023040df18933030
-            HVM64: ami-0130c3a072f3832ff
-            HVMG2: ami-0ff8a91507f77f867
-        us-west-2:
-            PV64: ami-afe1c0d7
-            HVM64: ami-a6cfeede
-            HVMG2: ami-a0cfeed8
-        us-west-1:
-            PV64: ami-06819ed4f6553bd1e
-            HVM64: ami-0dfd61ae8fdc4cd9d
-            HVMG2: ami-0bdb828fd58c52235
-        eu-west-1:
-            PV64: ami-0c651f40f9861388f
-            HVM64: ami-07a877f081af74359
-            HVMG2: ami-047bb4163c506cd98
-        eu-central-1:
-            PV64: ami-07c6c98d42a4bc369
-            HVM64: ami-0e0287b26addd9ff8
-            HVMG2: ami-0233214e13e500f77
-        ap-northeast-1:
-            PV64: ami-0f16a2ca7efacfa65
-            HVM64: ami-094524ca01aa224d2
-            HVMG2: ami-06cd52961ce9f0d85
-        ap-southeast-1:
-            PV64: ami-0a318515629ae86fd
-            HVM64: ami-0f248bcac6ff5bc17
-            HVMG2: ami-08569b978cc4dfa10
-        ap-southeast-2:
-            PV64: ami-0d783a243942fbe54
-            HVM64: ami-01ab4a3bc7e75f44a
-            HVMG2: ami-09b42976632b27e9b
 Resources:
     WebServerGroupv2:
         Type: 'AWS::AutoScaling::AutoScalingGroup'
@@ -391,7 +127,7 @@ Resources:
                             - 
                                 - 
                                     Ref: 'AWS::StackName'
-                                - -dev-stack
+                                - -eks-stack
                     Key: Name
             LoadBalancerNames:
                 - 
@@ -400,17 +136,8 @@ Resources:
         Type: 'AWS::AutoScaling::LaunchConfiguration'
         Properties:
             AssociatePublicIpAddress: 'true'
-            ImageId: 
-               'Fn::FindInMap':
-                    - AWSRegionArch2AMI
-                    - 
-                        Ref: 'AWS::Region'
-                    - 
-                        'Fn::FindInMap':
-                            - AWSInstanceType2Arch
-                            - 
-                                Ref: InstanceType
-                            - Arch
+            ImageId: !Ref InstanceImageId
+
             SecurityGroups:
                 - 
                     Ref: InstanceSecurityGroup
@@ -418,6 +145,7 @@ Resources:
                 Ref: KeyName
             InstanceType:
                 Ref: InstanceType
+            IamInstanceProfile:  !Ref NodeInstanceProfile
             UserData:
                 'Fn::Base64':
                  !Sub |
@@ -426,11 +154,6 @@ Resources:
                     MID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
                     hostname $MID
                     echo "127.0.0.1      $MID" >>  /etc/hosts
-                    yum install -y python-pip
-                    yum-config-manager --enable epel && yum install -y ansible
-                    yum install -y git
-                    cd /home/ec2-user/ && git clone https://github.com/govindcnd/hworld.git
-                    /usr/bin/ansible-playbook /home/ec2-user/hworld/Cformation/ansible/site.yml -i /home/ec2-user/hworld/Cformation/ansible/hosts --connection=local
 
     ElasticLoadBalancer:
         Type: 'AWS::ElasticLoadBalancing::LoadBalancer'
@@ -486,6 +209,13 @@ Resources:
                     ToPort: '22'
                     CidrIp:
                         Ref: SSHLocation
+    ClusterControlPlaneSecurityGroup:
+        Type: 'AWS::EC2::SecurityGroup'
+        Properties:
+            GroupDescription: Cluster control plane sec group
+            VpcId:
+                Ref: VpcId
+    
     hwolrdwebstackscaledownpolicy:
         Type: 'AWS::AutoScaling::ScalingPolicy'
         Properties:
@@ -542,6 +272,122 @@ Resources:
             Threshold: '90'
             Unit: Percent
             MetricName: CPUUtilization
+    
+    NodeInstanceProfile:
+      Type: AWS::IAM::InstanceProfile
+      Properties:
+        Path: "/"
+        Roles:
+        - !Ref NodeInstanceRole
+
+    NodeInstanceRole:
+      Type: AWS::IAM::Role
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service: ec2.amazonaws.com
+              Action: sts:AssumeRole
+        Path: "/"
+        ManagedPolicyArns:
+          - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+          - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+          - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+
+    eksClusterRole:
+      Type: AWS::IAM::Role
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: 2012-10-17
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service: eks.amazonaws.com
+              Action: sts:AssumeRole
+        Path: "/"
+        ManagedPolicyArns:
+          - arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+          - arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+
+
+    NodeSecurityGroupIngress:
+      Type: AWS::EC2::SecurityGroupIngress
+      DependsOn: InstanceSecurityGroup
+      Properties:
+        Description: Allow node to communicate with each other
+        GroupId: !Ref InstanceSecurityGroup
+        SourceSecurityGroupId: !Ref InstanceSecurityGroup
+        IpProtocol: -1
+        FromPort: 0
+        ToPort: 65535
+
+    NodeSecurityGroupFromControlPlaneIngress:
+      Type: AWS::EC2::SecurityGroupIngress
+      DependsOn: InstanceSecurityGroup
+      Properties:
+        Description: Allow worker Kubelets and pods to receive communication from the cluster control plane
+        GroupId: !Ref InstanceSecurityGroup
+        SourceSecurityGroupId: !Ref ClusterControlPlaneSecurityGroup
+        IpProtocol: tcp
+        FromPort: 1025
+        ToPort: 65535
+
+    ControlPlaneEgressToNodeSecurityGroup:
+      Type: AWS::EC2::SecurityGroupEgress
+      DependsOn: InstanceSecurityGroup
+      Properties:
+        Description: Allow the cluster control plane to communicate with worker Kubelet and pods
+        GroupId: !Ref ClusterControlPlaneSecurityGroup
+        DestinationSecurityGroupId: !Ref InstanceSecurityGroup
+        IpProtocol: tcp
+        FromPort: 1025
+        ToPort: 65535
+
+    NodeSecurityGroupFromControlPlaneOn443Ingress:
+      Type: AWS::EC2::SecurityGroupIngress
+      DependsOn: InstanceSecurityGroup
+      Properties:
+        Description: Allow pods running extension API servers on port 443 to receive communication from cluster control plane
+        GroupId: !Ref InstanceSecurityGroup
+        SourceSecurityGroupId: !Ref ClusterControlPlaneSecurityGroup
+        IpProtocol: tcp
+        FromPort: 443
+        ToPort: 443
+
+    ControlPlaneEgressToNodeSecurityGroupOn443:
+        Type: AWS::EC2::SecurityGroupEgress
+        DependsOn: InstanceSecurityGroup
+        Properties:
+          Description: Allow the cluster control plane to communicate with pods running extension API servers on port 443
+          GroupId: !Ref ClusterControlPlaneSecurityGroup
+          DestinationSecurityGroupId: !Ref InstanceSecurityGroup
+          IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+
+    ClusterControlPlaneSecurityGroupIngress:
+        Type: AWS::EC2::SecurityGroupIngress
+        DependsOn: InstanceSecurityGroup
+        Properties:
+          Description: Allow pods to communicate with the cluster API Server
+          GroupId: !Ref ClusterControlPlaneSecurityGroup
+          SourceSecurityGroupId: !Ref InstanceSecurityGroup
+          IpProtocol: tcp
+          ToPort: 443
+          FromPort: 443
+
+    EKSCluster:
+        Type: AWS::EKS::Cluster
+        Properties:
+          Name: !Ref Clustername
+          Version: '1.11'
+          RoleArn: !GetAtt eksClusterRole.Arn
+          ResourcesVpcConfig:
+            SecurityGroupIds:
+            - !Ref InstanceSecurityGroup
+            SubnetIds: !Ref LSubnet1
 Outputs:
     URL:
         Description: URL of the website
