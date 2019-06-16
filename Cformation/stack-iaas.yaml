@@ -417,8 +417,7 @@ Resources:
                     hostname $MID
                     echo "127.0.0.1      $MID" >>  /etc/hosts
                     yum install -y python-pip
-                    yum-config-manager --enable epel
-                    yum install -y ansible
+                    yum-config-manager --enable epel && yum install -y ansible
                     yum install -y git
                     cd /home/ec2-user/ && git clone https://github.com/govindcnd/hworld.git
                     /usr/bin/ansible-playbook /home/ec2-user/hworld/Cformation/ansible/site.yml -i /home/ec2-user/hworld/Cformation/ansible/hosts --connection=local
