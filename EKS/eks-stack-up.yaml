@@ -236,6 +236,7 @@ Resources:
           - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
           - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
           - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+          - arn:aws:iam::aws:policy/AmazonEC2FullAccess
 
     eksClusterRole:
       Type: AWS::IAM::Role
@@ -333,3 +334,8 @@ Outputs:
   NodeInstanceRole:
     Description: The node instance role
     Value: !GetAtt NodeInstanceRole.Arn
+  EKSCluster:
+    Description: The eks cluster role arn
+    Value: !GetAtt EKSCluster.Arn
+  
+  
