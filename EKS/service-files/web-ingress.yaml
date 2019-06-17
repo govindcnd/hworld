@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: "web-ingress"
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+#    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80,"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/subnets: << subnet details of your the stack comma seperated . eg: ssubnet-0xxxxxx,subnet-5xxxxxx >>
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    # allow 404s on the health check
+    #     alb.ingress.kubernetes.io/healthcheck-path: "/"
+    #         alb.ingress.kubernetes.io/success-codes: '200,404'
+  labels:
+    app: webapp
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: "webapp"
+              servicePort: 8081
