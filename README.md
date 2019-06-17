@@ -12,9 +12,9 @@ is as follows
    4. Powered with Configuration management tool `Ansible ` which enables to manage the iaas as code even 
       inside the operating system.
       
-**Note**
-The current template is being tested on AWS Ireland and Singapore region only. 
-Incase if you try to run the same on other region do update the ami details accordingly.
-Upon successfull stack creation the output section of cloudformation template will be shared with ELB
-end point to access the service we deployed on the nodes. 
+**Note** 
+   The current template is being tested on AWS Ireland and Singapore region only. 
+   Incase if you try to run the same on other region do update the ami details accordingly.
+   Upon successfull stack creation the output section of cloudformation template will be shared with ELB
+   end point to access the service we deployed on the nodes. 
 
