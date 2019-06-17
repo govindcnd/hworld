@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: << instnace role arn of the worker node group we created with cloudformation . EG: arn:aws:iam::xxxxxxx:role/stackname-NodeInstanceRole-xxxxxxxx >>
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
+
