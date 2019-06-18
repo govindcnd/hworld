@@ -33,7 +33,7 @@ Parameters:
     BootstrapArguments:
         Description: Arguments to pass to the bootstrap script. See files/bootstrap.sh in https://github.com/awslabs/amazon-eks-ami
         Type: String
-        Default: ""
+        Default: "--kubelet-extra-args --node-labels=env=stg"
     WNGroupname:
         Description: worker node groupname  must be lower case and no special characteres
         Type: String
@@ -237,6 +237,9 @@ Resources:
           - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
           - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
           - arn:aws:iam::aws:policy/AmazonEC2FullAccess
+          - arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess
+          - arn:aws:iam::aws:policy/AWSWAFFullAccess
+          - arn:aws:iam::aws:policy/ResourceGroupsandTagEditorFullAccess
 
     eksClusterRole:
       Type: AWS::IAM::Role
