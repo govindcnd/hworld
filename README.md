@@ -2,10 +2,14 @@
 The hello world app can be deployed in two different fashion here. The first one is AWS cloudformation 
 and second one is with AWS Cloudformation + EKS. Details steps on bringing up the stack is as follows.
 
-## Method 1 : Using AWS Cloudformation
+## Method 1 : Using AWS Cloudformation on EC2 
 Simply clone this repo and inside the Cformation folder you will find the yaml file `stack-iaas.yaml` 
-to bring up the hello world app on aws with ec2 instnace and load balancer. The highlights of this method 
-is as follows
+to bring up the hello world app on aws with ec2 instnace and load balancer and autoscaling load the yaml 
+file on aws cloudformation with AWS console and pass on the parameters required. Please remember that 
+this yaml is designed to work with existing VPC its associated subnet. By default AWS will have default
+vpc in all regions, either you can choose the default VPC or your custom vpc along with the relative Subnets. 
+
+The highlights of this method  is as follows
    1. Stack will be created with high availability
    2. Traffic is limited to certain services from the ip you refer
    3. Is reproducible with the same script
@@ -17,8 +21,24 @@ is as follows
        
       
 **Note**    
-   The current template is being tested on AWS Ireland and Singapore region only. 
+   The current template is being tested on AWS `Ireland` and `Singapore` regions only. 
    Incase if you try to run the same on other region do update the ami details accordingly.
    Upon successfull stack creation the output section of cloudformation template will be shared with ELB
    end point to access the service we deployed on the nodes. 
 
+## Method 1 : Using AWS Cloudformation on EKS
+This is a bit extended method of setting up an EKS stack based on kubernetes and deploying the apps on
+the underlying ec2 stack. Similar to the method 1 we will be setting up the EKS as well as ec2 high available
+infrastructure with the help of cloudformation template and rest of the app deployment will be with `kubectl`.
+Simply clone this repo and inside EKS folder you will find the yaml file `eks-stack-up.yaml` , to bring up the 
+hello world app on aws with ec2 instnace and load balancer and autoscaling load the yaml file on aws cloudformation
+with AWS console and pass on the parameters required. Please remember that this yaml is designed to work with 
+existing VPC its associated subnet. By default AWS will have default vpc in all regions, either you can choose 
+the default VPC or your custom vpc along with the relative Subnets. 
+
+The Steps to deploy the app on EKS is as follows, 
+   1. Make sure the Stack creation state is `complete` within cloudformation, it might take 10-15 minutes along with 
+      EKS and EC2 HA set up. 
+   2. The out put section of cloudformation console with have the role arn and subnet details required in the futhter steps. 
+      eg:
+      <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-output.png" alt="" width="2110" height="560" /></a>
