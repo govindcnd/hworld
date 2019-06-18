@@ -49,7 +49,8 @@ The Steps to deploy the app on EKS is as follows,
    EKS and EC2 HA set up. 
 2. The out put section of cloudformation console with have the role arn and subnet details required in the futhter steps. 
       eg:
-      <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-outputs.png" alt="" width="2110" height="560" /></a>
+
+<a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-outputs.png" alt="" width="2110" height="560" /></a>
       
 3. Configuring client kubectl with the cluster details
    
@@ -65,7 +66,7 @@ Refer :
 cloudformation output section for the clustername, region will the region upon which you bring this stack up
  eg: `eu-west-1` for Ireland. 
 
-```
+
 EG : 
     <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-outputs.png" alt="" width="500" height="500" /></a>
 
