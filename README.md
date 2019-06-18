@@ -9,8 +9,11 @@ is as follows
    1. Stack will be created with high availability
    2. Traffic is limited to certain services from the ip you refer
    3. Is reproducible with the same script
-   4. Powered with Configuration management tool `Ansible ` which enables to manage the iaas as code even 
+   4. Enabled with Configuration management tool `Ansible ` which enables to manage the iaas as code even 
       inside the operating system.
+   5. The out put section of cloudformation console with have the end point url to access the service. 
+       eg: 
+       
       
 **Note**    
    The current template is being tested on AWS Ireland and Singapore region only. 
