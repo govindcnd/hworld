@@ -68,7 +68,7 @@ cloudformation output section for the clustername, region will the region upon w
 
 
 EG : 
-    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-outputs.png" alt="" width="500" height="500" /></a>
+    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-outputs.png" alt="" width="1500" height="500" /></a>
 
 4. deploy the webapp and service ( deployment & service for our app) 
 ```
