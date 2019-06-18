@@ -52,15 +52,18 @@ The Steps to deploy the app on EKS is as follows,
       <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-outputs.png" alt="" width="2110" height="560" /></a>
       
 3. Configuring client kubectl with the cluster details
+   
    3.1. IAM user credentials with access to EKS and EC2 must be configured on the client machine. 
+   
    3.2. update the kubeconfig file  with the eks stack we just created 
 
 ```
 aws eks --region region update-kubeconfig --name cluster_name
 ```
 
-Refer : cloudformation output section for the clustername, region will the region upon which you bring this stack up
-        eg: `eu-west-1` for Ireland. 
+Refer : 
+cloudformation output section for the clustername, region will the region upon which you bring this stack up
+ eg: `eu-west-1` for Ireland. 
 
 4. deploy the webapp and service ( deployment & service for our app) 
 ```
