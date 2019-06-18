@@ -144,3 +144,16 @@ AWS EKS documentation : https://docs.aws.amazon.com/eks/latest/userguide/getting
 Nginx official documentation :  https://nginx.org/en/docs/
 
 K8s documentation : https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
+
+
+
+### Production Level Scope ##
+Upon deploying the same on production level infra the following can be considered
+   1. Run Production stack with minimum 3 or 5 number of nodes . 
+   2. Run infra on Reserved instance to bring down the cost 
+   3. Run infra on Reserved + Spot ( 60% + 40%). 
+   4. Optimize the container with required resources so as to achieve max utilization of resources
+   5. Upon optimizing find the right instnace type.
+   6. Considering Azure AKS / Google container GKE for possible options to bringh down the cost. 
+   7. Serving static contents from CDN  (optional) 
+   
