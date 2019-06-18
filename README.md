@@ -41,6 +41,7 @@ EG:
 **Note on EKS**    
    The current template is being tested on AWS `Ireland` and `Frankfurt` regions only. 
    Incase if you try to run the same on other region do update the ami details accordingly.
+   Tested with C5.large and t2.micro instance types. 
    The local machine is expected to have installed with `kubectl`.
    
          
