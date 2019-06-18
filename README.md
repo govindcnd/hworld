@@ -123,10 +123,10 @@ EG:
 ### Service Verification##
 
 *For Method 1*
-To verify the service simply copy past the web-ingress address from the output value againist the load balancer on the Cloudformation Stack. 
+To verify the service simply copy past the web-ingress address from the output value againist the load balancer on the Cloudformation Stack. Open up the browser and access the url for the  helloworld and check for headers which would reflect the hostname of container. 
  
 *For Method 2*
-To verify the service simply copy past the web-ingress address from the output of  `kubectl get ing`  and open up the browser and access the url of helloworld and check for headers 
+To verify the service simply copy past the web-ingress address from the output of  `kubectl get ing`  and open up the browser and access the url of helloworld and check for headers which would reflect the hostname of container. 
 
 EG: 
    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/sample-op.png" alt="" width="2000" height="500" /></a>
