@@ -66,14 +66,14 @@ Refer : cloudformation output section for the clustername, region will the regio
 kubectl apply -f webapp.yaml
 ```
 EG : 
-    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-outputs.png" alt="" width="200" height="200" /></a>
+    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-outputs.png" alt="" width="500" height="500" /></a>
 
 4. deploy the webapp and service ( deployment & service for our app) 
 ```
 kubectl apply -f webapp.yaml
 ```
 EG : 
-    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/deploy-app" alt="" width="200" height="200" /></a>
+    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/deploy-app.png" alt="" width="200" height="200" /></a>
     
 5. deploy the config-map ( deployment & service for our app) 
 ```
@@ -81,11 +81,11 @@ kubectl apply -f aws-auth-configmap.yaml
 ```
 
 EG : 
-    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/config-map.png" alt="" width="200" height="200" /></a>
+    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/config-map.png" alt="" width="500" height="200" /></a>
 
 Please make sure you udpate the configmap  yaml with the role arn which created on the step 1. The role arn can be found in the cloudformation output. 
 EG:
-    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/config-map-file.png" alt="" width="200" height="200" /></a>
+    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/config-map-file.png" alt="" width="500" height="200" /></a>
 
 6. deploy the role , ingress and alb ingress controller for our web app ( deployment & service for our app) 
 ```
@@ -99,9 +99,9 @@ EG :
 Please make sure you udpate the web-ingress  yaml with the subnets of your stack and alb-ingress-controller yaml with your
 eks stack name which can be found in the cloudformation output. 
 EG:
-    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/ingress-with-subnet.png" alt="" width="200" height="200" /></a>
+    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/ingress-with-subnet.png" alt="" width="500" height="200" /></a>
 
-   <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/alb-ingress-update.png" alt="" width="200" height="200" /></a>
+   <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/alb-ingress-update.png" alt="" width="500" height="200" /></a>
     
 7. verify pods, service , deployments and ingress  
    You have to run the kubectl get  to fetch details from our eks stack. 
