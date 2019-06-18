@@ -76,7 +76,7 @@ kubectl apply -f webapp.yaml
 ```
 EG : 
 
-<a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/deploy-app.png" alt="" width="100" height="300" /></a>
+<a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/deploy-app.png" alt="" width="300" height="100" /></a>
     
 5. deploy the config-map ( deployment & service for our app) 
 ```
