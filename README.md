@@ -61,6 +61,7 @@ aws eks --region region update-kubeconfig --name cluster_name
 
 Refer : cloudformation output section for the clustername, region will the region upon which you bring this stack up
         eg: `eu-west-1` for Ireland. 
+
 4. deploy the webapp and service ( deployment & service for our app) 
 ```
 kubectl apply -f webapp.yaml
