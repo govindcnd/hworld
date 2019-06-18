@@ -36,6 +36,12 @@ with AWS console and pass on the parameters required. Please remember that this 
 existing VPC its associated subnet. By default AWS will have default vpc in all regions, either you can choose 
 the default VPC or your custom vpc along with the relative Subnets. 
 
+**Note on EKS**    
+   The current template is being tested on AWS `Ireland` and `Frankfurt` regions only. 
+   Incase if you try to run the same on other region do update the ami details accordingly.
+   The local machine is expected to have installed with `kubectl`.
+   
+         
 The Steps to deploy the app on EKS is as follows, 
    1. Make sure the Stack creation state is `complete` within cloudformation, it might take 10-15 minutes along with 
       EKS and EC2 HA set up. 
@@ -43,3 +49,11 @@ The Steps to deploy the app on EKS is as follows,
       eg:
       <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-output.png" alt="" width="2110" height="560" /></a>
       
+Configuring client kubectl with the cluster details
+   1. IAM user credentials with access to EKS and EC2 must be configured on the client machine. 
+   2. update the kubeconfig file  with the eks stack we just created 
+       ```
+       aws eks --region region update-kubeconfig --name cluster_name
+       ```
+       Refer : cloudformation output section for the clustername, region will the region upon which you bring this stack up
+       
