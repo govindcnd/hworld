@@ -90,7 +90,7 @@ EG :
 Please make sure you udpate the configmap  yaml with the role arn which created on the step 1. The role arn can be found in the cloudformation output. 
 EG:
  
-<a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/config-map-file.png" alt="" width="400" height="150" /></a>
+<a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/config-map-file.png" alt="" width="500" height="200" /></a>
 
 6. deploy the role , ingress and alb ingress controller for our web app ( deployment & service for our app) 
 ```
