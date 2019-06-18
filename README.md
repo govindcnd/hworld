@@ -111,5 +111,14 @@ EG:
 7. verify pods, service , deployments and ingress  
    You have to run the kubectl get  to fetch details from our eks stack. 
 ```
-kubectl 
+kubectl  get pods
+kubectl get nodes
+kubectl get ing
 ```  
+EG: 
+   <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/output.png" alt="" width="500" height="200" /></a>
+
+
+### Service Verification##
+
+To verify the service simply copy past the web-ingress address from the output of  `kubectl get ing`
