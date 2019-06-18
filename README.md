@@ -131,3 +131,17 @@ To verify the service simply copy past the web-ingress address from the output o
 
 EG: 
    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/sample-op.png" alt="" width="2000" height="500" /></a>
+
+
+
+### References ##
+AWS Api documentation
+   https://docs.aws.amazon.com/
+AWS Cloudformation documentation
+   https://docs.aws.amazon.com/cloudformation/index.html
+AWS EKS documentation
+   https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html
+Nginx official documentation
+   https://nginx.org/en/docs/
+K8s documentation
+   https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
