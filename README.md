@@ -135,13 +135,12 @@ EG:
 
 
 ### References ##
-AWS Api documentation
-   https://docs.aws.amazon.com/
-AWS Cloudformation documentation
-   https://docs.aws.amazon.com/cloudformation/index.html
-AWS EKS documentation
-   https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html
-Nginx official documentation
-   https://nginx.org/en/docs/
-K8s documentation
-   https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
+AWS Api documentation : https://docs.aws.amazon.com/
+
+AWS Cloudformation documentation : https://docs.aws.amazon.com/cloudformation/index.html
+
+AWS EKS documentation : https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html
+
+Nginx official documentation :  https://nginx.org/en/docs/
+
+K8s documentation : https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands
