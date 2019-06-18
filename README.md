@@ -156,4 +156,6 @@ Upon deploying the same on production level infra the following can be considere
    5. Upon optimizing find the right instnace type.
    6. Considering Azure AKS / Google container GKE for possible options to bringh down the cost. 
    7. Serving static contents from CDN  (optional) 
+   8. Enable Cluster autoscaling  on EKS 
+   9. Enable HPA ( Horizontal Pod Autoscaling) .
    
