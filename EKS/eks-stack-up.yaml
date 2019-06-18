@@ -117,7 +117,7 @@ Parameters:
         Type: Number
         Default: '1'
     InstanceImageId:
-        Description: AMI id for the node instances. 
+        Description: AMI id for the node instances eg ami-08716b70cac884aaa for Ireland and ami-0d741ed58ca5b342e for frankfurt with version 1.12 of eks
         Type: AWS::EC2::Image::Id
         Default: 'ami-08716b70cac884aaa'
 Metadata:
@@ -338,4 +338,7 @@ Outputs:
     Description: The eks cluster role arn
     Value: !GetAtt EKSCluster.Arn
   
+  Clustername:
+    Description: The eks cluster name 
+    Value: !Ref Clustername
   
