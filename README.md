@@ -65,9 +65,6 @@ Refer :
 cloudformation output section for the clustername, region will the region upon which you bring this stack up
  eg: `eu-west-1` for Ireland. 
 
-4. deploy the webapp and service ( deployment & service for our app) 
-```
-kubectl apply -f webapp.yaml
 ```
 EG : 
     <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-outputs.png" alt="" width="500" height="500" /></a>
@@ -114,7 +111,7 @@ EG:
 7. verify pods, service , deployments and ingress  
    You have to run the kubectl get  to fetch details from our eks stack. 
 ```
-kubectl  get pods
+kubectl get pods
 kubectl get nodes
 kubectl get ing
 ```  
