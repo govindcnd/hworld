@@ -47,7 +47,7 @@ The Steps to deploy the app on EKS is as follows,
       EKS and EC2 HA set up. 
    2. The out put section of cloudformation console with have the role arn and subnet details required in the futhter steps. 
       eg:
-      <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-output.png" alt="" width="2110" height="560" /></a>
+      <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/eks-cf-outputs.png" alt="" width="2110" height="560" /></a>
       
 Configuring client kubectl with the cluster details
    1. IAM user credentials with access to EKS and EC2 must be configured on the client machine. 
