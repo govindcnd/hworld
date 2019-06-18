@@ -100,14 +100,14 @@ kubectl apply -f web-ingress.yaml
 ```
 EG : 
 
-<a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/ingress.png" alt="" width="200" height="200" /></a>
+<a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/ingress.png" alt="" width="500" height="200" /></a>
 
 Please make sure you udpate the web-ingress  yaml with the subnets of your stack and alb-ingress-controller yaml with your
 eks stack name which can be found in the cloudformation output. 
 EG:
-    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/ingress-with-subnet.png" alt="" width="500" height="200" /></a>
+    <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/ingress-with-subnet.png" alt="" width="1500" height="500" /></a>
 
-   <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/alb-ingress-update.png" alt="" width="500" height="200" /></a>
+   <a href="" target="_blank"><img src="https://images-helloworld.s3-ap-southeast-1.amazonaws.com/alb-ingress-update.png" alt="" width="1500" height="500" /></a>
     
 7. verify pods, service , deployments and ingress  
    You have to run the kubectl get  to fetch details from our eks stack. 
