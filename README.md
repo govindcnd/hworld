@@ -158,4 +158,5 @@ Upon deploying the same on production level infra the following can be considere
    7. Serving static contents from CDN  (optional) 
    8. Enable Cluster autoscaling  on EKS 
    9. Enable HPA ( Horizontal Pod Autoscaling) .
+  10. Use CodeDeploy for app deployment. ( Specific to Method 1, replacing ansible invoking on userdata) 
    
